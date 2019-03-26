@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700');
+
+:root {
+  --color-primary: #FF6347;
+  --color-dark-primary: #FF4500;
+  --color-light-primary: #FF7F50;
+}
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* ---- Modifiers ---- */
+
+.container{
+  padding: 1rem;
+}
+
+.nav-link {
+  border: 0;
+  background: rgba(0, 0, 0, 0);
+}
+
+.navbar-toggler{
+  border: 0;
+}
+
+.navbar-light-primary{
+  background-color: var(--color-light-primary);
+}
+
+.btn-primary{
+  background-color: var(--color-primary);
+  border: 0;
+}
+
+.btn-primary:hover{
+  background-color: var(--color-primary);
+  border: 0;
+}
+
+.btn-is-rounded{
+  border-radius: 25px;
+}
