@@ -16,7 +16,7 @@ class Card extends Component {
     try {
       const { cityTo } = this.props.data
       const api = await photosService.getPhoto(cityTo)
-      const photoRandom = api.results[this.randomNumber(api.results.length)].urls.regular
+      const photoRandom = api.results[this.randomNumber(api.results.length)].urls.small
       this.setState(
         {
           photoUrl: photoRandom,

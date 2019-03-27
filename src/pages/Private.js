@@ -17,7 +17,7 @@ class Private extends Component {
       const api = await flightsService.getAll()
       this.setState(
         {
-          flights: api,
+          flights: api.data,
           status: 'isLoaded',
         }
       )
@@ -33,7 +33,7 @@ class Private extends Component {
 
   handleRenderList = () => {
     return (
-      this.state.flights.data.map(flight => (
+      this.state.flights.map(flight => (
         <Card key={flight.id} data={flight} />
       ))
     )
