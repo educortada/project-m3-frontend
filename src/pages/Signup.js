@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../providers/AuthProvider';
 
+// Components
+import Button from '../components/Button'
+
 class Signup extends Component {
 
   state = {
@@ -40,7 +43,7 @@ class Signup extends Component {
           <div className="form-group">
             <input onChange={this.handleChange} className="form-control" type="password" name="password" placeholder="Password" value={password} />
           </div>
-          <button type="submit" className="btn btn-primary btn-block btn-is-rounded">Signup</button>
+          <Button>Signup</Button>
         </form>
         <p>Already have account? <Link to={"/login"}> Login</Link></p>
       </React.Fragment>

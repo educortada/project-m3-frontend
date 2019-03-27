@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import photosService from '../lib/photos-service'
 
+// Components
+import Button from '../components/Button'
 class Card extends Component {
 
   state = {
@@ -39,14 +41,18 @@ class Card extends Component {
       case 'isLoading':
         return <p>Loading</p>
       case 'isLoaded':
+        // CSS
+        const cardPhoto = {
+          backgroundImage: `url(${photoUrl})`,
+        }
         return (
           <div className="card">
-            <img src={photoUrl} className="card-img-top" alt="..."></img>
+            <div style={cardPhoto} className="card-img-top"></div>
             <div className="card-body">
               <h5 className="card-title">{cityTo}</h5>
               <p className="card-text"> Duration: {fly_duration}</p>
               <p className="card-text"> Price: {price}€</p>
-              <button className="btn btn-primary">Go somewhere</button>
+              <Button>See more about {cityTo}</Button>
             </div>
           </div>
         )

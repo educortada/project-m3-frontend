@@ -1,63 +1,38 @@
 import React, { Component } from 'react'
 import { withAuth } from '../providers/AuthProvider';
 
-import flightsService from '../lib/flights-service'
-// import convertTime from '../helpers/index'
-
 // Components
-import Card from '../components/Card'
+import Search from '../components/Search'
+import List from '../components/List'
 
 class Private extends Component {
   state = {
-    status: 'isLoading',
-    flights: [],
-  }
-  componentDidMount = async () => {
-    try {
-      const api = await flightsService.getAll()
-      this.setState(
-        {
-          flights: api.data,
-          status: 'isLoaded',
-        }
-      )
-      console.log(this.state.flights);
-
-    } catch (error) {
-      this.setState({
-        status: 'hasError',
-      })
-      console.log(error)
-    }
+    isDestinatons: false,
+    departureCity: '',
   }
 
-  handleRenderList = () => {
-    return (
-      this.state.flights.map(flight => (
-        <Card key={flight.id} data={flight} />
-      ))
-    )
+  handleList = (boolean) => {
+    this.setState({
+      isDestinatons: boolean
+    })
+  }
+
+  handleDepartureCity = (city) => {
+    this.setState({
+      departureCity: city
+    })
   }
 
   render() {
-    const { user } = this.props
-    const { status } = this.state
 
-    switch (status) {
-      case 'isLoading':
-        return <p>Is loading</p>
-      case 'isLoaded':
-        return (
-          <React.Fragment>
-            <h1>Welcome {user.username}</h1>
-            {this.handleRenderList()}
-          </React.Fragment>
-        )
-      case 'hasError':
-        return 'Error!'
-      default:
-        break
-    }
+    return (
+      (this.state.isDestinatons) 
+      ? <React.Fragment>
+          {/* <Search list={this.handleList} /> */}
+          <List departureCity={this.state.departureCity} /> 
+        </React.Fragment>
+      : <Search handleList={this.handleList} handleDepartureCity={this.handleDepartureCity} />
+    )
   }
 }
 
