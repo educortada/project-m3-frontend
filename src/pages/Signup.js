@@ -15,12 +15,12 @@ class Signup extends Component {
     const password = this.state.password;
 
     this.props.signup({ username, password })
-      .then(() => {
-        this.setState({
-          username: "",
-          password: "",
-        });
-      })
+      // .then(() => {
+      //   this.setState({
+      //     username: "",
+      //     password: "",
+      //   });
+      // })
       .catch(error => console.log(error))
   }
 
