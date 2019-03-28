@@ -42,15 +42,4 @@ class Navbar extends Component {
   }
 }
 
-export default withAuth(Navbar);
-
-// (isLogged) ?
-// <React.Fragment>
-//   <p>username: {username}</p>
-//   <button onClick={logout} type="button" className="btn btn-primary">Logout</button>
-// </React.Fragment>
-// :
-// <React.Fragment>
-//   <Link to='/login' className="btn btn-outline-primary">Login</Link>
-//   <Link to='/signup' className="btn btn-primary">Signup</Link>
-// </React.Fragment>
+export default withAuth(Navbar)

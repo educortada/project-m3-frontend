@@ -6,7 +6,9 @@
   --color-light-primary: #FF7F50;
 
   --shadow: rgba(206,214,219,.75);
-  --background: #f5f7fa
+  --background: #f5f7fa;
+
+  --color-heart: #ed143d;
 }
 
 html {
@@ -41,12 +43,21 @@ body {
   background-color: var(--color-light-primary);
 }
 
+.navbar .likes{
+  position: absolute;
+  right: 28px;
+  top: 12px;
+  font-size: 1.5rem;
+  color: var(--white);
+  background: rgba(0, 0, 0, 0);
+  border: 0;
+}
+
 /* ---- Button ---- */
 
 .btn-primary{
   background-color: var(--color-primary);
   background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);;
-
   border: 0;
 }
 
@@ -74,4 +85,18 @@ body {
   background-position: center;
   border-top-left-radius: .5rem;
   border-top-right-radius: .5rem;
+}
+
+.card-body{
+  position: relative;
+}
+
+.card-favorite{
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.25rem;
+  color: var(--color-heart);
+  background: rgba(0, 0, 0, 0);
+  border: 0;
 }

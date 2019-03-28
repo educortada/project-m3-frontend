@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Switch} from 'react-router-dom'
+import { Switch } from 'react-router-dom'
 
 // Bootstrap JS
 import 'bootstrap/js/dist/collapse';
@@ -20,19 +20,49 @@ import Login from './pages/Login';
 
 import AuthProvider from './providers/AuthProvider';
 
+// Context
+const Context = React.createContext();
+export const Consumer = Context.Consumer
+
 
 class App extends Component {
+  state = {
+    favorites: [],
+  }
+
+  handleAddToFavorite = (trip) => {
+    this.setState(
+      { favorites: [...this.state.favorites, trip] }
+    )
+  }
+
+  handleRemoveFromFavorite = (updatedFavoriteList) => {
+    this.setState(
+      { favorites: [...updatedFavoriteList] }
+    )
+  }
+
   render() {
     return (
       <AuthProvider>
-        <Navbar />
-        <div className="container">
-          <Switch>
-            <AnonRoute path="/signup" component={Signup} />
-            <AnonRoute path="/login" component={Login} />
-            <PrivateRoute path="/private" component={Private} />
-          </Switch>
-        </div>
+        <Context.Provider
+          value={
+            {
+              favorites: this.state.favorites,
+              addToFavorite: this.handleAddToFavorite,
+              removeFromFavorite: this.handleRemoveFromFavorite
+            }
+          }
+        >
+          <Navbar />
+          <div className="container">
+            <Switch>
+              <AnonRoute path="/signup" component={Signup} />
+              <AnonRoute path="/login" component={Login} />
+              <PrivateRoute path="/private" component={Private} />
+            </Switch>
+          </div>
+        </Context.Provider>
       </AuthProvider>
     )
   }

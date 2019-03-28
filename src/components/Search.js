@@ -30,11 +30,9 @@ export class Search extends Component {
 
     const dateFrom = new Date(this.state.startDate)
     flightsService.dateFrom = moment(dateFrom).format("DD/MM/YYYY")
-    console.log(moment(dateFrom).format("DD/MM/YYYY"));
 
     const dateTo = new Date(this.state.endDate)
     flightsService.dateTo = moment(dateTo).format("DD/MM/YYYY")
-    console.log(moment(dateTo).format("DD/MM/YYYY"))
 
     flightsService.departureCity = this.state.departureCity
     this.props.handleList(true)
