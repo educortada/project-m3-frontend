@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import flightsService from '../lib/flights-service'
+import moment from 'moment';
 
 //CSS
 import "react-datepicker/dist/react-datepicker.css";
@@ -14,7 +16,8 @@ import DatePicker from "react-datepicker";
 export class Search extends Component {
   state = {
     departureCity: '',
-    startDate: new Date()
+    startDate: new Date(),
+    endDate: new Date(),
   }
 
   handleChange = (event) => {
@@ -24,15 +27,29 @@ export class Search extends Component {
   }
 
   handleFormSubmit = () => {
-    this.props.handleDepartureCity(this.state.departureCity)
+
+    const dateFrom = new Date(this.state.startDate)
+    flightsService.dateFrom = moment(dateFrom).format("DD/MM/YYYY")
+    console.log(moment(dateFrom).format("DD/MM/YYYY"));
+
+    const dateTo = new Date(this.state.endDate)
+    flightsService.dateTo = moment(dateTo).format("DD/MM/YYYY")
+    console.log(moment(dateTo).format("DD/MM/YYYY"))
+
+    flightsService.departureCity = this.state.departureCity
     this.props.handleList(true)
   }
 
-  handleChangeDate = (date) => {
-    console.log(date);
+  handleChangeDateFrom = (date) => {
     this.setState({
       startDate: date
-    });
+    })
+  }
+
+  handleChangeDateTo = (date) => {
+    this.setState({
+      endDate: date
+    })
   }
 
   render() {
@@ -49,7 +66,11 @@ export class Search extends Component {
         </select>
         <DatePicker
           selected={this.state.startDate}
-          onChange={this.handleChangeDate}
+          onChange={this.handleChangeDateFrom}
+        />
+        <DatePicker
+          selected={this.state.endDate}
+          onChange={this.handleChangeDateTo}
         />
         <Button>Search</Button>
       </form>

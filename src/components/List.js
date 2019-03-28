@@ -13,7 +13,7 @@ export class List extends Component {
   }
   componentDidMount = async () => {
     try {
-      const api = await flightsService.getAllFlightsFrom(this.props.departureCity)
+      const api = await flightsService.getAllFlightsFrom()
       this.setState(
         {
           flights: api.data,

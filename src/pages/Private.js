@@ -17,19 +17,11 @@ class Private extends Component {
     })
   }
 
-  handleDepartureCity = (city) => {
-    this.setState({
-      departureCity: city
-    })
-  }
-
   render() {
     return (
-      (this.state.isDestinatons) 
-      ? <React.Fragment>
-          <List departureCity={this.state.departureCity} /> 
-        </React.Fragment>
-      : <Search handleList={this.handleList} handleDepartureCity={this.handleDepartureCity} />
+      (this.state.isDestinatons)
+        ? <List departureCity={this.state.departureCity} />
+        : <Search handleList={this.handleList} />
     )
   }
 }
