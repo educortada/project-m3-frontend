@@ -38,9 +38,14 @@ export class List extends Component {
         return <p>Loading...</p>
       case 'isLoaded':
         return (
-          this.state.flights.map(flight => (
-            <Card key={flight.id} data={flight} />
-          ))
+          <React.Fragment>
+            <h3>Flights from {this.state.flights[0].cityFrom}</h3>
+            {
+              this.state.flights.map(flight => (
+                <Card key={flight.id} data={flight} />
+              ))
+            }
+          </React.Fragment>
         )
       case 'hasError':
         return 'Error!'

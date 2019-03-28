@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Switch} from 'react-router-dom'
 
+// Bootstrap JS
 import 'bootstrap/js/dist/collapse';
 
 // CSS

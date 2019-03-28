@@ -1,17 +1,26 @@
 import React, { Component } from 'react'
 
+//CSS
+import "react-datepicker/dist/react-datepicker.css";
+
+// Bootstrap JS
+import 'bootstrap/js/dist/dropdown'
+
 // Components
 import Button from '../components/Button'
+import DatePicker from "react-datepicker";
+
 
 export class Search extends Component {
   state = {
     departureCity: '',
+    startDate: new Date()
   }
 
   handleChange = (event) => {
-    this.setState(
-      { [event.target.name]: event.target.value }
-    )
+    this.setState({
+      departureCity: event.target.value,
+    })
   }
 
   handleFormSubmit = () => {
@@ -19,18 +28,29 @@ export class Search extends Component {
     this.props.handleList(true)
   }
 
+  handleChangeDate = (date) => {
+    console.log(date);
+    this.setState({
+      startDate: date
+    });
+  }
+
   render() {
     return (
       <form onSubmit={this.handleFormSubmit}>
-        <div className="form-group">
-          <input
-            onChange={this.handleChange}
-            className="form-control"
-            type="text"
-            name="departureCity"
-            placeholder="Departure"
-            value={this.state.departureCity} />
-        </div>
+        <select onChange={this.handleChange} className="custom-select" value={this.state.departureCity}>
+          <option value="selected">Departure city</option>
+          <option value="BCN">Barcelona</option>
+          <option value="MAD">Madrid</option>
+          <option value="BIO">Bilbao</option>
+          <option value="VLC">Valencia</option>
+          <option value="AGP">Malaga</option>
+          <option value="SVQ">Sevilla</option>
+        </select>
+        <DatePicker
+          selected={this.state.startDate}
+          onChange={this.handleChangeDate}
+        />
         <Button>Search</Button>
       </form>
     )

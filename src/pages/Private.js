@@ -24,11 +24,9 @@ class Private extends Component {
   }
 
   render() {
-
     return (
       (this.state.isDestinatons) 
       ? <React.Fragment>
-          {/* <Search list={this.handleList} /> */}
           <List departureCity={this.state.departureCity} /> 
         </React.Fragment>
       : <Search handleList={this.handleList} handleDepartureCity={this.handleDepartureCity} />

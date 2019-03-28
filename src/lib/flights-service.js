@@ -15,3 +15,6 @@ class FlightsService {
 
 const flightsService = new FlightsService();
 export default flightsService;
+
+// this.dateFrom = ''
+// this.departureCity = ''
