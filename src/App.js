@@ -17,6 +17,7 @@ import Navbar from './components/Navbar'
 import Private from './pages/Private';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Profile from './pages/Profile';
 
 import AuthProvider from './providers/AuthProvider';
 
@@ -60,6 +61,7 @@ class App extends Component {
               <AnonRoute path="/signup" component={Signup} />
               <AnonRoute path="/login" component={Login} />
               <PrivateRoute path="/private" component={Private} />
+              <PrivateRoute path="/profile" component={Profile} />
             </Switch>
           </div>
         </Context.Provider>

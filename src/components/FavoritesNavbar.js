@@ -8,10 +8,10 @@ export class FavoritesNavbar extends Component {
         {
           (value) => {
             return (
-              <div className="btn-group">
+              <React.Fragment>
                 <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                   <i className="fas fa-heart"></i> <span>{value.favorites.length}</span> Favorites
-              </button>
+                </button>
                 <div className="dropdown-menu dropdown-menu-right">
                   <ul>
                     {
@@ -23,7 +23,7 @@ export class FavoritesNavbar extends Component {
                     }
                   </ul>
                 </div>
-              </div>
+              </React.Fragment>
             )
           }
         }

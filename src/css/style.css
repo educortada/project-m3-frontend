@@ -52,6 +52,12 @@ ul{
   background-color: #494ca2;
 }
 
+.navbar-right-fixed{
+  position: absolute;
+  right: 16px;
+  top: 9px;
+}
+
 .navbar-favorite{
   position: absolute;
   right: 28px;
@@ -92,6 +98,17 @@ ul{
   border-radius: 25px;
 }
 
+.btn-profile{
+  padding: 0;
+  margin: 0;
+}
+
+.btn-profile > i{
+  font-size: 2rem;
+  color: var(--white);
+  margin-left: 1.5rem;
+}
+
 /* ---- Card ---- */
 
 .card{
@@ -127,4 +144,45 @@ ul{
 
 .fa-heart, .fa-shopping-cart, .fa-plane-departure {
   margin-right: .25rem;
+}
+
+/* ---- Profile ---- */
+
+.bg-profil{
+  position: absolute;
+  width: 100vw;
+  height: 200px;  
+  top: 54px;
+  left: 0;
+  z-index: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.profile-content{
+  position: relative;
+  z-index: 1;
+}
+
+.profile-title{
+  color: var(--white);
+  text-align: center;
+}
+
+.overlay{
+  position: absolute;
+  width: 100vw;
+  height: 200px;  
+  top: 54px;
+  left: 0;
+  z-index: 1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.profile-data{
+  margin-top: 9rem;
 }

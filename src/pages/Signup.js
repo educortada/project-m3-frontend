@@ -7,21 +7,20 @@ class Signup extends Component {
   state = {
     username: "",
     password: "",
+    email: "",
   };
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const username = this.state.username;
-    const password = this.state.password;
 
-    this.props.signup({ username, password })
+    this.props.signup(this.state);
       // .then(() => {
       //   this.setState({
       //     username: "",
       //     password: "",
       //   });
       // })
-      .catch(error => console.log(error))
+      // .catch(error => console.log(error))
   }
 
   handleChange = (event) => {
@@ -30,12 +29,15 @@ class Signup extends Component {
   }
 
   render() {
-    const { username, password } = this.state;
+    const { username, password, email } = this.state;
     return (
       <React.Fragment>
         <form onSubmit={this.handleFormSubmit}>
           <div className="form-group">
             <input onChange={this.handleChange} className="form-control" type="text" name="username" placeholder="Username" value={username} />
+          </div>
+          <div className="form-group">
+            <input onChange={this.handleChange} className="form-control" type="email" name="email" placeholder="Email" value={email}/>
           </div>
           <div className="form-group">
             <input onChange={this.handleChange} className="form-control" type="password" name="password" placeholder="Password" value={password} />
