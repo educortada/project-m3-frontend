@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../providers/AuthProvider';
 
+// Componrnts
+import FavoritesNavbar from './FavoritesNavbar'
+
 class Navbar extends Component {
   render() {
     const { isLogged, logout } = this.props;
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark navbar-light-primary">
+      <nav className="navbar navbar-expand-lg navbar-dark navbar-light-primary fixed-top">
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -37,6 +40,7 @@ class Navbar extends Component {
             }
           </ul>
         </div>
+        <FavoritesNavbar />
       </nav>
     )
   }
