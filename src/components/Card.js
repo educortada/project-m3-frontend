@@ -55,7 +55,7 @@ class Card extends Component {
               <h5 className="card-title">{cityTo}</h5>
               <p className="card-text"> Duration: {fly_duration}</p>
               <p className="card-text"> Price: {price}€</p>
-              <Button>See more</Button>
+              <Button><i class="fas fa-shopping-cart"></i> Buy</Button>
             </div>
           </div>
         )
