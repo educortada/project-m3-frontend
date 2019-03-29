@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { withAuth } from '../providers/AuthProvider';
 
-// Components
-import Button from '../components/Button'
-
 class Login extends Component {
   state = {
     username: "",
@@ -34,7 +31,7 @@ class Login extends Component {
         <div className="form-group">
           <input onChange={this.handleChange} className="form-control" type="password" name="password" placeholder="Password" value={password} />
         </div>
-        <Button>Login</Button>
+        <button className="btn btn-primary">Login</button>
       </form>
     )
   }

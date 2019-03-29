@@ -11,6 +11,7 @@
   --background: #f5f7fa;
 
   --color-heart: #ed143d;
+  --color-success: #52BE80;
 }
 
 html {
@@ -61,10 +62,6 @@ ul{
   border: 0;
 }
 
-.fa-heart{
-  margin-right: .5rem;
-}
-
 .show>.btn-primary.dropdown-toggle{
   background: var(--color-primary);
 }
@@ -79,6 +76,16 @@ ul{
 .btn-primary:hover{
   background-color: var(--color-primary);
   border: 0;
+}
+
+.btn-is-success{
+  background-color: var(--color-success);
+  color: var(--white);
+}
+
+.btn-is-success:hover{
+  background-color: var(--color-success);
+  color: var(--white);
 }
 
 .btn-is-rounded{
@@ -116,6 +123,8 @@ ul{
   border: 0;
 }
 
-.fa-shopping-cart {
+/* ---- Icons ---- */
+
+.fa-heart, .fa-shopping-cart, .fa-plane-departure {
   margin-right: .25rem;
 }

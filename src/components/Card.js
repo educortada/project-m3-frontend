@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import photosService from '../lib/photos-service'
 
 // Components
-import Button from '../components/Button'
 import FavoriteCard from '../components/FavoriteCard'
+import ButtonBuy from '../components/ButtonBuy'
 
 class Card extends Component {
 
@@ -55,7 +55,8 @@ class Card extends Component {
               <h5 className="card-title">{cityTo}</h5>
               <p className="card-text"> Duration: {fly_duration}</p>
               <p className="card-text"> Price: {price}€</p>
-              <Button><i class="fas fa-shopping-cart"></i> Buy</Button>
+              <ButtonBuy flight={this.props.data} />
+              
             </div>
           </div>
         )

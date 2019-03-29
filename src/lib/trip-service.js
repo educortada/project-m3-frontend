@@ -8,9 +8,9 @@ class TripService {
     })
   }
 
-  createTrip = () => {
-    return this.api.post('/trip/create')
-      .then(({ data }) => data)
+  createTrip = (flight) => {
+    return this.api.post('/trip/create', flight)
+      .then(( data ) => console.log(data))
   }
 }
 

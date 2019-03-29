@@ -8,8 +8,6 @@ import "react-datepicker/dist/react-datepicker.css";
 // Bootstrap JS
 import 'bootstrap/js/dist/dropdown'
 
-// Components
-import Button from '../components/Button'
 import DatePicker from "react-datepicker";
 
 
@@ -70,7 +68,7 @@ export class Search extends Component {
           selected={this.state.endDate}
           onChange={this.handleChangeDateTo}
         />
-        <Button>Search</Button>
+        <button className="btn btn-primary">Search</button>
       </form>
     )
   }
