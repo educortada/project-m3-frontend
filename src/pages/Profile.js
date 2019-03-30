@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withAuth } from '../providers/AuthProvider';
 import authService from '../lib/auth-service'
 import photosService from '../lib/photos-service'
+import tripService from '../lib/trip-service'
 
 export class Profile extends Component {
 
@@ -10,6 +11,8 @@ export class Profile extends Component {
     background: '',
     username: this.props.user.username,
     email: this.props.user.email,
+    isUpdated: false,
+    flights: []
   }
 
   randomNumber(Arraylength) {
@@ -20,12 +23,15 @@ export class Profile extends Component {
     try {
       const api = await photosService.getPhoto('landscape')
       const photoRandom = api.results[this.randomNumber(api.results.length)].urls.small
+      const flights = await tripService.getFlights()
       this.setState(
         {
           background: photoRandom,
           status: 'isLoaded',
+          flights: flights,
         }
       )
+
     } catch (error) {
       this.setState({
         status: 'hasError',
@@ -36,18 +42,41 @@ export class Profile extends Component {
 
   handleInput = (event) => {
     const { name, value } = event.target
-    this.setState({ [name]: value })
+    this.setState({
+      [name]: value,
+      isUpdated: false,
+    })
   }
 
   handleSubmit = (event) => {
-    const {username, email} = this.state
+    const { username, email } = this.state
     event.preventDefault()
     authService.updateUser(username, email);
+    this.setState({
+      isUpdated: true,
+    })
+  }
+
+  renderList = () => {
+    const { background } = this.state
+    const backgroundImage = {
+      backgroundImage: `url(${background})`,
+    }
+    return this.state.flights.map(flight => {
+      return (
+        <div className="card card-horizontal">
+          <div style={backgroundImage} className="card-horizontal-img"></div>
+          <div className="card-body">
+            <h5 className="card-title">{flight.destination}</h5>
+            <p className="card-text">Price: {flight.price} €</p>
+          </div>
+        </div>
+      )
+    })
   }
 
   render() {
     const { background, username, email, status } = this.state
-    // CSS
     const backgroundImage = {
       backgroundImage: `url(${background})`,
     }
@@ -72,8 +101,17 @@ export class Profile extends Component {
                   <label htmlFor="email">Email</label>
                   <input onChange={this.handleInput} type="email" id="email" className="form-control" name="email" value={email} />
                 </div>
-                <button type="submit" className="btn btn-primary">Actualizar</button>
+                {
+                  (this.state.isUpdated) ?
+                    <button type="submit" className="btn btn-primary btn-is-success">Great change!</button>
+                    :
+                    <button type="submit" className="btn btn-primary">Update</button>
+                }
               </form>
+            </section>
+            <section className="profile-trips">
+              <h5>Your flights</h5>
+              {this.renderList()}
             </section>
           </React.Fragment>
         )

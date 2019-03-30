@@ -12,6 +12,11 @@ class TripService {
     return this.api.post('/trip/create', flight)
       .then(( data ) => console.log(data))
   }
+
+  getFlights = () => {
+    return this.api.get('/trip/flights')
+      .then(({ data }) => data)
+  }
 }
 
 const tripService = new TripService()

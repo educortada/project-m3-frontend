@@ -27,6 +27,10 @@ body {
   color: var(--color-text);
 }
 
+section{
+  padding: 1rem 0;
+}
+
 ul{
   margin: 0;
   padding: 0;
@@ -140,6 +144,23 @@ ul{
   border: 0;
 }
 
+/* ---- Card horizontal ---- */
+
+.card-horizontal{
+  flex-direction: row;
+}
+
+.card-horizontal-img{
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-top-left-radius: .5rem;
+  border-bottom-left-radius: .5rem;
+}
+
+
 /* ---- Icons ---- */
 
 .fa-heart, .fa-shopping-cart, .fa-plane-departure {
@@ -184,5 +205,5 @@ ul{
 }
 
 .profile-data{
-  margin-top: 9rem;
+  margin-top: 6rem;
 }
