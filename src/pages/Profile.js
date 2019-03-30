@@ -58,28 +58,23 @@ export class Profile extends Component {
   }
 
   renderList = () => {
-    const { background } = this.state
-    const backgroundImage = {
-      backgroundImage: `url(${background})`,
-    }
     return this.state.flights.map(flight => {
+      const backgroundImage = { backgroundImage: `url(${flight.imgUrl})` }
       return (
-        <div className="card card-horizontal">
+        <article className="card card-horizontal">
           <div style={backgroundImage} className="card-horizontal-img"></div>
           <div className="card-body">
             <h5 className="card-title">{flight.destination}</h5>
             <p className="card-text">Price: {flight.price} €</p>
           </div>
-        </div>
+        </article>
       )
     })
   }
 
   render() {
     const { background, username, email, status } = this.state
-    const backgroundImage = {
-      backgroundImage: `url(${background})`,
-    }
+    const backgroundImage = { backgroundImage: `url(${background})` }
     switch (status) {
       case 'isLoading':
         return <p>Loading...</p>
@@ -103,15 +98,14 @@ export class Profile extends Component {
                 </div>
                 {
                   (this.state.isUpdated) ?
-                    <button type="submit" className="btn btn-primary btn-is-success">Great change!</button>
+                    <button type="submit" className="btn btn-primary btn-is-success">Great!</button>
                     :
                     <button type="submit" className="btn btn-primary">Update</button>
                 }
               </form>
             </section>
             <section className="profile-trips">
-              <h5>Your flights</h5>
-              {this.renderList()}
+              {(this.state.flights.length) ? this.renderList() : <h5>You don't have flights yet!</h5>}
             </section>
           </React.Fragment>
         )

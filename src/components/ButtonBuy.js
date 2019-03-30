@@ -8,7 +8,7 @@ export class ButtonBuy extends Component {
   }
 
   handleClickBuy = async () => {
-    await tripService.createTrip(this.props.flight)
+    await tripService.createTrip(this.props.flight, this.props.photoCity)
     this.setState({
       isBought: true
     })
