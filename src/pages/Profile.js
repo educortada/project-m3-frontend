@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withAuth } from '../providers/AuthProvider';
+import authService from '../lib/auth-service'
 import photosService from '../lib/photos-service'
 
 export class Profile extends Component {
@@ -38,6 +39,12 @@ export class Profile extends Component {
     this.setState({ [name]: value })
   }
 
+  handleSubmit = (event) => {
+    const {username, email} = this.state
+    event.preventDefault()
+    authService.updateUser(username, email);
+  }
+
   render() {
     const { background, username, email, status } = this.state
     // CSS
@@ -56,7 +63,7 @@ export class Profile extends Component {
               <h1 className="profile-title">{username}</h1>
             </section>
             <section className="profile-data">
-              <form>
+              <form onSubmit={this.handleSubmit}>
                 <div className="form-group">
                   <label htmlFor="username">Username</label>
                   <input onChange={this.handleInput} type="text" id="username" className="form-control" name="username" value={username} />
