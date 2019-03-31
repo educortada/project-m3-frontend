@@ -3,12 +3,14 @@ import flightsService from '../lib/flights-service'
 import moment from 'moment';
 
 //CSS
-import "react-datepicker/dist/react-datepicker.css";
+import 'react-datepicker/dist/react-datepicker.css'
 
 // Bootstrap JS
 import 'bootstrap/js/dist/dropdown'
 
-import DatePicker from "react-datepicker";
+// Components
+import DatePicker from 'react-datepicker'
+import QuantityBox from './QuantityBox'
 
 
 export class Search extends Component {
@@ -16,6 +18,7 @@ export class Search extends Component {
     departureCity: '',
     startDate: new Date(),
     endDate: new Date(),
+    adults: 0,
   }
 
   handleChange = (event) => {
@@ -33,6 +36,7 @@ export class Search extends Component {
     flightsService.dateTo = moment(dateTo).format("DD/MM/YYYY")
 
     flightsService.departureCity = this.state.departureCity
+    flightsService.adults = this.state.adults
     this.props.handleList(true)
   }
 
@@ -48,9 +52,15 @@ export class Search extends Component {
     })
   }
 
+  handleQuantity = (quantity) => {
+    this.setState({
+      adults: quantity
+    })
+  }
+
   render() {
     return (
-      <form onSubmit={this.handleFormSubmit}>
+      <form onSubmit={this.handleFormSubmit} className="search-flight">
         <select onChange={this.handleChange} className="custom-select" value={this.state.departureCity}>
           <option value="selected">Departure city</option>
           <option value="BCN">Barcelona</option>
@@ -60,14 +70,20 @@ export class Search extends Component {
           <option value="AGP">Malaga</option>
           <option value="SVQ">Sevilla</option>
         </select>
+        <span>From:</span>
         <DatePicker
           selected={this.state.startDate}
           onChange={this.handleChangeDateFrom}
+          className="date-picker custom-select"
         />
+        <span>To:</span>
         <DatePicker
           selected={this.state.endDate}
           onChange={this.handleChangeDateTo}
+          className="date-picker custom-select"
         />
+        <span>Travellers:</span>
+        <QuantityBox adults={this.handleQuantity} />
         <button className="btn btn-primary">Search</button>
       </form>
     )

@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700');
 
 :root {
-  --color-primary: #8186d5;
-  --color-dark-primary: #FF4500;
-  --color-light-primary: #FF7F50;
-
+  --color-primary: #3bb4c1;
+  --color-primary-light: #65adb8;
+  --color-primary-super-light: #79ced7;
+  --color-navbar: #048998;
   --color-text: #555555;
-
+  
+  --border: #dddddd;
   --shadow: #e3e7f1;
   --background: #f5f7fa;
 
@@ -51,9 +52,12 @@ ul{
 .navbar-toggler{
   border: 0;
 }
+.dropdown-toggle.btn-primary{
+  background-color: var(--color-primary-light);
+}
 
 .navbar-light-primary{
-  background-color: #494ca2;
+  background-color: var(--color-navbar);
 }
 
 .navbar-right-fixed{
@@ -206,4 +210,70 @@ ul{
 
 .profile-data{
   margin-top: 6rem;
+}
+
+/* ---- Search flight ---- */
+
+.search-flight{
+  display: flex;
+  flex-flow: wrap;
+  flex-direction: column;
+}
+
+.search-flight select{
+  margin-bottom: 1.5rem;
+}
+
+.date-picker{
+  margin-bottom: 1.5rem;
+}
+
+.custom-select{
+  border: 1px solid var(--border);
+}
+
+/* ---- Quantity flight ---- */
+
+.qty-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  height: 40px;
+  width: 150px;
+  margin-bottom: 1.5rem;
+}
+
+.qty-box span {
+  color: var(--color-primary);
+  line-height: 40px;
+  text-align: center;
+  width: calc(100%/3);
+}
+
+.dec, .inc {
+  height: 100%;
+  cursor: pointer;
+}
+
+.qty{
+  color: var(--white);
+  background: var(--color-super-light);
+  line-height: 38px;
+}
+
+/* ---- Modifier ---- */
+
+.react-datepicker__input-container{
+  width: 100% !important;
+}
+
+.react-datepicker__day--selected{
+  background-color: var(--color-primary) !important;
+}
+
+.react-datepicker__header{
+  background-color: var(--background) !important;
+  border-bottom: 0 !important;
 }

@@ -18,6 +18,7 @@ import Private from './pages/Private';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
+import City from './pages/City'
 
 import AuthProvider from './providers/AuthProvider';
 
@@ -62,6 +63,7 @@ class App extends Component {
               <AnonRoute path="/login" component={Login} />
               <PrivateRoute path="/private" component={Private} />
               <PrivateRoute path="/profile" component={Profile} />
+              <PrivateRoute path="/city" component={City} />
             </Switch>
           </div>
         </Context.Provider>

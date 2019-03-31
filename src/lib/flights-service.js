@@ -8,10 +8,11 @@ class FlightsService {
     this.dateFrom = ''
     this.dateTo = ''
     this.departureCity = ''
+    this.adults = ''
   }
 
   getAllFlightsFrom = () => {
-    return this.api.get(`/flights?&fly_from=${this.departureCity}&fly_to=LGW,CDG,FCO,BER,AMS,MUC,OPO,ATH,JFK,HND,LAX&date_from=${this.dateFrom}&date_to=${this.dateTo}&sort=quality&one_for_city=1`)
+    return this.api.get(`/flights?&fly_from=${this.departureCity}&fly_to=LGW,CDG,FCO,BER,AMS,MUC,OPO,ATH,JFK,HND,LAX&date_from=${this.dateFrom}&date_to=${this.dateTo}&adults=${this.adults}&sort=quality&one_for_city=1`)
       .then(({ data }) => data)
   }
 }

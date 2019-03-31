@@ -37,6 +37,7 @@ class Card extends Component {
 
   render() {
     const { status, photoCity } = this.state
+    const { adults } = this.props
     const { cityTo, price, fly_duration } = this.props.data
 
     switch (status) {
@@ -54,7 +55,9 @@ class Card extends Component {
               <FavoriteCard trip={this.props.data} />
               <h5 className="card-title">{cityTo}</h5>
               <p className="card-text"> Duration: {fly_duration}</p>
-              <p className="card-text"> Price: {price}€</p>
+              <p className="card-text"> Price: {price}€ 
+                <small className="text-muted">{adults} Adults</small>
+              </p>
               <ButtonBuy flight={this.props.data} photoCity={photoCity} />
 
             </div>

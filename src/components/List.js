@@ -10,6 +10,7 @@ export class List extends Component {
   state = {
     status: 'isLoading',
     flights: [],
+    adults: 0
   }
   componentDidMount = async () => {
     try {
@@ -17,10 +18,11 @@ export class List extends Component {
       this.setState(
         {
           flights: api.data,
+          adults: api.search_params.seats.adults,
           status: 'isLoaded',
         }
       )
-      console.log(this.state.flights);
+      console.log(api)
 
     } catch (error) {
       this.setState({
@@ -42,7 +44,7 @@ export class List extends Component {
             <h3>Flights from {this.state.flights[0].cityFrom}</h3>
             {
               this.state.flights.map(flight => (
-                <Card key={flight.id} data={flight} />
+                <Card key={flight.id} data={flight} adults={this.state.adults} />
               ))
             }
           </React.Fragment>
