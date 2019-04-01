@@ -3,7 +3,8 @@ import axios from 'axios';
 class PlacesService {
   constructor() {
     this.api = axios.create({
-      baseURL: 'http://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+barcelona&key=AIzaSyDsEByxBnrnhpBaH8ZCuEIPQZP8jRIWaVw'
+      baseURL: 'https://maps.googleapis.com/maps/api/place/textsearch/json?key=AIzaSyAa6Y4zK9Fc3UdzuoXxUHfsGzCFVxuUQ5I&libaries=places',
+      withCredentials: true
     })
   }
 

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { withAuth } from '../providers/AuthProvider';
-import authService from '../lib/auth-service'
 import photosService from '../lib/photos-service'
 import tripService from '../lib/trip-service'
 
@@ -49,9 +48,9 @@ export class Profile extends Component {
   }
 
   handleSubmit = (event) => {
-    const { username, email } = this.state
     event.preventDefault()
-    authService.updateUser(username, email);
+    const { username, email } = this.state
+    this.props.update({ username, email })
     this.setState({
       isUpdated: true,
     })

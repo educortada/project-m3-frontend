@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import placesService from '../lib/places-service'
+// import placesService from '../lib/places-service'
 
 
 class City extends Component {

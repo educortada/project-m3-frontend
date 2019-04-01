@@ -258,9 +258,9 @@ ul{
 }
 
 .qty{
-  color: var(--white);
-  background: var(--color-super-light);
-  line-height: 38px;
+  color: var(--white) !important;
+  background: var(--color-primary-super-light);
+  line-height: 38px !important;
 }
 
 /* ---- Modifier ---- */
