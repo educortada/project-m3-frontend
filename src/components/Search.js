@@ -16,8 +16,10 @@ import QuantityBox from './QuantityBox'
 export class Search extends Component {
   state = {
     departureCity: '',
-    startDate: new Date(),
-    endDate: new Date(),
+    startFrom: new Date(),
+    startTo: new Date(),
+    returnFrom: new Date(),
+    returnTo: new Date(),
     adults: 0,
   }
 
@@ -29,26 +31,49 @@ export class Search extends Component {
 
   handleFormSubmit = () => {
 
-    const dateFrom = new Date(this.state.startDate)
-    flightsService.dateFrom = moment(dateFrom).format("DD/MM/YYYY")
+    const startFrom = new Date(this.state.startFrom)
+    flightsService.startFrom = moment(startFrom).format("DD/MM/YYYY")
 
-    const dateTo = new Date(this.state.endDate)
-    flightsService.dateTo = moment(dateTo).format("DD/MM/YYYY")
+    const startTo = new Date(this.state.startTo)
+    flightsService.startTo = moment(startTo).format("DD/MM/YYYY")
+
+    const returnFrom = new Date(this.state.returnFrom)
+    flightsService.returnFrom = moment(returnFrom).format("DD/MM/YYYY")
+    
+    const returnTo = new Date(this.state.returnTo)
+    flightsService.returnTo = moment(returnTo).format("DD/MM/YYYY")
+
+    console.log(flightsService.startFrom);
+    console.log(flightsService.startTo);
+    console.log(flightsService.returnFrom);
+    console.log(flightsService.returnTo);
 
     flightsService.departureCity = this.state.departureCity
     flightsService.adults = this.state.adults
     this.props.handleList(true)
   }
 
-  handleChangeDateFrom = (date) => {
+  handleChangeStartFrom = (date) => {
     this.setState({
-      startDate: date
+      startFrom: date
     })
   }
 
-  handleChangeDateTo = (date) => {
+  handleChangeStartTo = (date) => {
     this.setState({
-      endDate: date
+      startTo: date
+    })
+  }
+
+  handleChangeReturnFrom = (date) => {
+    this.setState({
+      returnFrom: date
+    })
+  }
+
+  handleChangeReturnTo = (date) => {
+    this.setState({
+      returnTo: date
     })
   }
 
@@ -70,19 +95,31 @@ export class Search extends Component {
           <option value="AGP">Malaga</option>
           <option value="SVQ">Sevilla</option>
         </select>
-        <span>From:</span>
+        <span>Date from</span>
         <DatePicker
-          selected={this.state.startDate}
-          onChange={this.handleChangeDateFrom}
+          selected={this.state.startFrom}
+          onChange={this.handleChangeStartFrom}
           className="date-picker custom-select"
         />
-        <span>To:</span>
+        <span>Date to</span>
         <DatePicker
-          selected={this.state.endDate}
-          onChange={this.handleChangeDateTo}
+          selected={this.state.startTo}
+          onChange={this.handleChangeStartTo}
           className="date-picker custom-select"
         />
-        <span>Travellers:</span>
+        <span>Return from</span>
+        <DatePicker
+          selected={this.state.returnFrom}
+          onChange={this.handleChangeReturnFrom}
+          className="date-picker custom-select"
+        />
+        <span>Return to</span>
+        <DatePicker
+          selected={this.state.returnTo}
+          onChange={this.handleChangeReturnTo}
+          className="date-picker custom-select"
+        />
+        <span>Adults</span>
         <QuantityBox adults={this.handleQuantity} />
         <button className="btn btn-primary">Search</button>
       </form>
