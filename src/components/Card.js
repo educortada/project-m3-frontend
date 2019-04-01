@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import photosService from '../lib/photos-service'
+import moment from 'moment';
 
 // Components
 import FavoriteCard from '../components/FavoriteCard'
@@ -38,7 +39,7 @@ class Card extends Component {
   render() {
     const { status, photoCity } = this.state
     const { adults } = this.props
-    const { cityTo, price, fly_duration } = this.props.data
+    const { cityTo, price, fly_duration, return_duration, dTime, aTime, nightsInDest, route } = this.props.data
 
     switch (status) {
       case 'isLoading':
@@ -54,10 +55,18 @@ class Card extends Component {
             <div className="card-body">
               <FavoriteCard trip={this.props.data} />
               <h5 className="card-title">{cityTo}</h5>
-              <p className="card-text"> Duration: {fly_duration}</p>
               <p className="card-text"> Price: {price}€ 
                 <small className="text-muted">{adults} Adults</small>
               </p>
+              <p>Nights in destination: {nightsInDest}</p>
+              <p className="card-text"> Duration: {fly_duration}</p>
+              <p className="card-text"> Departure schedule: {moment.unix(dTime).format("DD/MM/YYYY HH:mm")}</p>
+              <p className="card-text"> Arrival schedule: {moment.unix(aTime).format("DD/MM/YYYY HH:mm")}</p>
+              
+              <p className="card-text"> Return duration: {return_duration}</p>
+              <p className="card-text"> Departure schedule: {moment.unix(route[1].dTime).format("DD/MM/YYYY HH:mm")}</p>
+              <p className="card-text"> Arrival schedule: {moment.unix(route[1].aTime).format("DD/MM/YYYY HH:mm")}</p>
+
               <ButtonBuy flight={this.props.data} photoCity={photoCity} />
 
             </div>
