@@ -37,7 +37,7 @@ ul{
   padding: 0;
 }
 
-/* ---- Modifiers ---- */
+/* ---- Modifier ---- */
 
 .container{
   padding: 5rem 1rem 1rem;
@@ -92,6 +92,17 @@ ul{
   border: 0;
 }
 
+.btn-outline-primary{
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn-outline-primary:hover{
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  background-color: rgba(0, 0, 0, 0);
+}
+
 .btn-is-success{
   background-color: var(--color-success);
   color: var(--white);
@@ -104,6 +115,20 @@ ul{
 
 .btn-is-rounded{
   border-radius: 25px;
+}
+
+.btns-group{
+  display: flex;
+}
+
+.btns-group > .btn:first-child{
+  flex: 1 0 auto;
+  margin-right: .5rem;
+}
+
+.btns-group > .btn:last-child{
+  flex: 1 0 auto;
+  margin-left: .5rem;
 }
 
 .btn-profile{

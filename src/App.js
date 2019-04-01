@@ -18,6 +18,8 @@ import Private from './pages/Private';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
+import Start from './pages/Start';
+
 import firebase from 'firebase';
 
 import AuthProvider from './providers/AuthProvider';
@@ -69,6 +71,7 @@ class App extends Component {
           <Navbar />
           <div className="container">
             <Switch>
+              <AnonRoute exact path="/" component={Start} />
               <AnonRoute path="/signup" component={Signup} />
               <AnonRoute path="/login" component={Login} />
               <PrivateRoute path="/home" component={Private} />
