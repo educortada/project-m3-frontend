@@ -18,7 +18,7 @@ export class ButtonBuy extends Component {
     return (
       <div>
         {(this.state.isBought)
-          ? <button className="btn btn-is-success"><i class="fas fa-plane-departure"></i>Bought</button>
+          ? <button className="btn btn-is-success"><i className="fas fa-plane-departure"></i>Bought</button>
           : <button className="btn btn-primary" onClick={this.handleClickBuy} ><i className="fas fa-shopping-cart"></i>Buy</button>}
       </div>
     )

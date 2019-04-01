@@ -20,7 +20,7 @@ class Navbar extends Component {
             <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
               <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li className="nav-item active">
-                  <Link to='/private' className="nav-link">Home</Link>
+                  <Link to='/home' className="nav-link">Home</Link>
                 </li>
                 <li className="nav-item active">
                   <button onClick={logout} className="nav-link">Logout</button>

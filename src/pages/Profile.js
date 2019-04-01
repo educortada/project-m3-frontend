@@ -81,7 +81,7 @@ export class Profile extends Component {
     return this.state.flights.map(flight => {
       const backgroundImage = { backgroundImage: `url(${flight.imgUrl})` }
       return (
-        <article className="card card-horizontal">
+        <article key={flight._id} className="card card-horizontal">
           <div style={backgroundImage} className="card-horizontal-img"></div>
           <div className="card-body">
             <h5 className="card-title">{flight.destination}</h5>
