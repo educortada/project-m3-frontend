@@ -17,7 +17,7 @@ export class Profile extends Component {
     flights: [],
     avatar: '',
     isUploading: false,
-    progress: 0,
+    progress: 100,
     avatarURL: this.props.user.avatarURL
   }
 
@@ -120,6 +120,8 @@ export class Profile extends Component {
                   <input onChange={this.handleInput} type="email" id="email" className="form-control" name="email" value={email} />
                 </div>
 
+                {this.state.isUploading && <p>Loading...</p>}
+
                 <FileUploader
                   accept="image/*"
                   name="avatar"
@@ -131,15 +133,24 @@ export class Profile extends Component {
                   onProgress={this.handleProgress}
                 />
                 {
-                  (this.state.isUpdated) ?
+                  (this.state.progress === 100) ?
+                    (this.state.isUpdated) ?
                     <button type="submit" className="btn btn-primary btn-is-success">Great!</button>
                     :
                     <button type="submit" className="btn btn-primary">Update</button>
+                  : false
                 }
               </form>
             </section>
             <section className="profile-trips">
-              {(this.state.flights.length) ? this.renderList() : <h5>You don't have flights yet!</h5>}
+              {
+                (this.state.flights.length) ?
+                  <React.Fragment>
+                    <h5>Your flights</h5>
+                    {this.renderList()}
+                  </React.Fragment>
+                : <h5>You don't have flights yet!</h5>
+              }
             </section>
           </React.Fragment>
         )

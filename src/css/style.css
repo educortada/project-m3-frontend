@@ -221,6 +221,16 @@ ul{
   background-color: rgba(0, 0, 0, 0.3);
 }
 
+.profile-data > form{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.profile-data > form > .btn-primary{
+  margin-top: 2rem;
+}
+
 /* ---- Search flight ---- */
 
 .search-flight{
