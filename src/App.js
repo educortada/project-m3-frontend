@@ -18,7 +18,7 @@ import Private from './pages/Private';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
-import City from './pages/City'
+import firebase from 'firebase';
 
 import AuthProvider from './providers/AuthProvider';
 
@@ -26,6 +26,16 @@ import AuthProvider from './providers/AuthProvider';
 const Context = React.createContext();
 export const Consumer = Context.Consumer
 
+// Firebase
+const config = {
+  apiKey: "AIzaSyAa6Y4zK9Fc3UdzuoXxUHfsGzCFVxuUQ5I",
+  authDomain: "project-m3-322bd.firebaseapp.com",
+  databaseURL: "https://project-m3-322bd.firebaseio.com",
+  projectId: "project-m3-322bd",
+  storageBucket: "project-m3-322bd.appspot.com",
+  messagingSenderId: "80833003080"
+}
+firebase.initializeApp(config)
 
 class App extends Component {
   state = {
@@ -63,7 +73,6 @@ class App extends Component {
               <AnonRoute path="/login" component={Login} />
               <PrivateRoute path="/private" component={Private} />
               <PrivateRoute path="/profile" component={Profile} />
-              <PrivateRoute path="/city" component={City} />
             </Switch>
           </div>
         </Context.Provider>

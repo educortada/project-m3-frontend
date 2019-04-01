@@ -31,8 +31,8 @@ class AuthService {
   }
 
   updateUser(user) {
-    const { username, email } = user
-    return this.auth.put('/auth/profile/update', { username, email })
+    const { username, email, avatarURL } = user
+    return this.auth.put('/auth/profile/update', { username, email, avatarURL })
       .then(({ data }) => data);
   }
 }
