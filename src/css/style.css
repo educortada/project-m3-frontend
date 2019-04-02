@@ -6,6 +6,7 @@
   --color-primary-super-light: #79ced7;
   --color-navbar: #048998;
   --color-text: #555555;
+  --color-text-light: #6e6e6e;
   
   --border: #dddddd;
   --shadow: #e3e7f1;
@@ -86,6 +87,11 @@ ul{
 
 /* ---- Button ---- */
 
+.btn-wide{
+  width: 100%;
+  margin-top: 1rem;
+}
+
 .btn-primary{
   background-color: var(--color-primary);
   border: 0;
@@ -119,6 +125,7 @@ ul{
 
 .btn-link{
   color: var(--color-primary);
+  padding: .375rem 0;
 }
 
 .btn-link:hover{
@@ -174,15 +181,92 @@ ul{
 .card-body{
   position: relative;
 }
+.card-header{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* Reset original */
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+}
+
+.card-title{
+  font-size: 1.75rem;
+}
+
+.card-price{
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  margin-bottom: 0.25rem;
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.card-adults{
+  color: var( --color-text-light);
+  font-size: 0.75rem;
+}
+
+.card-outband, .card-return{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.card-outband .card-outband-schedule:last-child,
+.card-return .card-return-schedule:last-child{
+  text-align: right;
+}
+
+.card-outband-schedule,
+.card-return-schedule{
+  color: var(--color-text-light);
+  width: 70px;
+}
+
+.card-nights{
+  position: absolute;
+  top: 54px;
+  font-size: 0.75rem;
+}
+
+.card-outband > .fa-plane,
+.card-return > .fa-plane{
+  position: absolute;
+  top: 40px;
+  left: calc(50% - 8px);
+}
+
+.route-code{
+  position: absolute;
+  top: 10px;
+  left: calc(50% - 34px);
+  font-weight: 500;
+}
 
 .card-favorite{
   position: absolute;
-  top: 1rem;
-  right: 1rem;
   font-size: 1.25rem;
   color: var(--color-heart);
-  background: rgba(0, 0, 0, 0);
+  top: -18px;
+  left: 176px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ececec;
   border: 0;
+  box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-favorite .fa-heart{
+  margin: 0;
 }
 
 /* ---- Card horizontal ---- */
@@ -192,6 +276,7 @@ ul{
 }
 
 .card-horizontal-img{
+  flex: 1 1 25%;
   width: 100px;
   height: 100px;
   background-size: cover;
@@ -201,6 +286,27 @@ ul{
   border-bottom-left-radius: .5rem;
 }
 
+.card-horitzontal-header{
+  flex: 1 1 75%;
+  padding: .75rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card-horizontal-title{
+  margin-bottom: 0;
+  flex: 1 0 60%;
+}
+
+.card-horizontal-price{
+  flex: 1 0 40%;
+  text-align: right;
+  color: var(--color-primary);
+  font-weight: 500;
+  font-size: 1.15rem;
+}
 
 /* ---- Icons ---- */
 

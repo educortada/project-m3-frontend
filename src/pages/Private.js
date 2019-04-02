@@ -7,20 +7,20 @@ import List from '../components/List'
 
 class Private extends Component {
   state = {
-    isDestinatons: false,
+    isShowFlights: false,
     departureCity: '',
   }
 
   handleList = (boolean) => {
     this.setState({
-      isDestinatons: boolean
+      isShowFlights: boolean
     })
   }
 
   render() {
     return (
-      (this.state.isDestinatons)
-        ? <List departureCity={this.state.departureCity} />
+      (this.state.isShowFlights)
+        ? <List handleList={this.handleList} departureCity={this.state.departureCity} />
         : <Search handleList={this.handleList} />
     )
   }

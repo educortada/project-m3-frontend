@@ -83,9 +83,9 @@ export class Profile extends Component {
       return (
         <article key={flight._id} className="card card-horizontal">
           <div style={backgroundImage} className="card-horizontal-img"></div>
-          <div className="card-body">
-            <h5 className="card-title">{flight.destination}</h5>
-            <p className="card-text">Price: {flight.price} €</p>
+          <div className="card-horitzontal-header">
+            <h5 className="card-horizontal-title">{flight.destination}</h5>
+            <p className="card-horizontal-price">{flight.price}€</p>
           </div>
         </article>
       )

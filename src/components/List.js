@@ -32,6 +32,10 @@ export class List extends Component {
     }
   }
 
+  handleShowList = () => {
+    this.props.handleList(false)
+  }
+
   render() {
     const { status } = this.state
 
@@ -41,6 +45,9 @@ export class List extends Component {
       case 'isLoaded':
         return (
           <React.Fragment>
+            <button onClick={this.handleShowList} className="btn btn-link">
+              <i className="fas fa-angle-left"></i> Go back
+            </button>
             <h3>Flights from {this.state.flights[0].cityFrom}</h3>
             {
               this.state.flights.map(flight => (

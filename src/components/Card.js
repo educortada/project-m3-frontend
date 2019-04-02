@@ -39,7 +39,7 @@ class Card extends Component {
   render() {
     const { status, photoCity } = this.state
     const { adults } = this.props
-    const { cityTo, price, fly_duration, return_duration, dTime, aTime, nightsInDest, route } = this.props.data
+    const { cityTo, price, dTime, aTime, nightsInDest, route, routes } = this.props.data
 
     switch (status) {
       case 'isLoading':
@@ -54,20 +54,31 @@ class Card extends Component {
             <div style={cardPhoto} className="card-img-top"></div>
             <div className="card-body">
               <FavoriteCard trip={this.props.data} />
-              <h5 className="card-title">{cityTo}</h5>
-              <p className="card-text"> Price: {price}€ 
-                <small className="text-muted">{adults} Adults</small>
-              </p>
-              <p>Nights in destination: {nightsInDest}</p>
-              <p className="card-text"> Duration: {fly_duration}</p>
-              <p className="card-text"> Departure schedule: {moment.unix(dTime).format("DD/MM/YYYY HH:mm")}</p>
-              <p className="card-text"> Arrival schedule: {moment.unix(aTime).format("DD/MM/YYYY HH:mm")}</p>
-              
-              <p className="card-text"> Return duration: {return_duration}</p>
-              <p className="card-text"> Departure schedule: {moment.unix(route[1].dTime).format("DD/MM/YYYY HH:mm")}</p>
-              <p className="card-text"> Arrival schedule: {moment.unix(route[1].aTime).format("DD/MM/YYYY HH:mm")}</p>
 
-              <ButtonBuy flight={this.props.data} adults={this.props.adults} photoCity={photoCity} />
+              <div className="card-header">
+                <h4 className="card-title">{cityTo}</h4>
+                <p className="card-nights">{nightsInDest} nights</p>
+                <div className="wrap-price-adults">
+                  <p className="card-price"> {price}€</p>
+                  <p className="card-adults">{adults} Adults</p>
+                </div>
+              </div>
+
+              <div className="card-outband">
+                <span className="route-code">{routes[0].map(route => route)}</span>
+                <i className="fas fa-plane"></i>
+                <div className="card-outband-schedule">{moment.unix(dTime).format("DD/MM LT")}</div>
+                <div className="card-outband-schedule">{moment.unix(aTime).format("DD/MM LT")}</div>
+              </div>
+
+              <div className="card-return">
+                <span className="route-code">{routes[1].map(route => route)}</span>
+                <i className="fas fa-plane"></i>
+                <div className="card-return-schedule">{moment.unix(route[1].dTime).format("DD/MM LT")}</div>
+                <div className="card-return-schedule">{moment.unix(route[1].aTime).format("DD/MM LT")}</div>
+              </div>
+
+              <ButtonBuy flight={this.props.data} adults={adults} photoCity={photoCity} />
 
             </div>
           </div>
