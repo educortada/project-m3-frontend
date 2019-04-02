@@ -5,6 +5,7 @@ class Login extends Component {
   state = {
     username: "",
     password: "",
+    errorMessage: null,
   }
 
   handleFormSubmit = (event) => {
@@ -12,7 +13,13 @@ class Login extends Component {
     const { username, password } = this.state
 
     this.props.login({ username, password })
-      .then(() => { })
+      .then((message) => {
+        if (message.error) {
+          this.setState({
+            errorMessage: message.code,
+          })
+        }
+      })
       .catch(error => console.log(error))
   }
 
@@ -22,17 +29,20 @@ class Login extends Component {
   }
 
   render() {
-    const { username, password } = this.state;
+    const { username, password, errorMessage } = this.state;
     return (
-      <form onSubmit={this.handleFormSubmit}>
-        <div className="form-group">
-          <input onChange={this.handleChange} className="form-control" type="text" name="username" placeholder="Username" value={username} />
-        </div>
-        <div className="form-group">
-          <input onChange={this.handleChange} className="form-control" type="password" name="password" placeholder="Password" value={password} />
-        </div>
-        <button className="btn btn-primary">Login</button>
-      </form>
+      <React.Fragment>
+        {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}
+        <form onSubmit={this.handleFormSubmit}>
+          <div className="form-group">
+            <input onChange={this.handleChange} className="form-control" type="text" name="username" placeholder="Username" value={username} />
+          </div>
+          <div className="form-group">
+            <input onChange={this.handleChange} className="form-control" type="password" name="password" placeholder="Password" value={password} />
+          </div>
+          <button className="btn btn-primary">Login</button>
+        </form>
+      </React.Fragment>
     )
   }
 }

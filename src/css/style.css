@@ -37,6 +37,10 @@ ul{
   padding: 0;
 }
 
+.margin-x-noraml{
+  margin: 1rem 0;
+}
+
 /* ---- Modifier ---- */
 
 .container{
@@ -111,6 +115,14 @@ ul{
 .btn-is-success:hover{
   background-color: var(--color-success);
   color: var(--white);
+}
+
+.btn-link{
+  color: var(--color-primary);
+}
+
+.btn-link:hover{
+  color: var(--color-primary);
 }
 
 .btn-is-rounded{

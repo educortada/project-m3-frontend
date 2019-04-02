@@ -58,7 +58,12 @@ export default class AuthProvider extends Component {
       .then((user) => {
         this.setUser(user);
       })
-      .catch(error => console.log(error))
+      .catch(error => {
+        console.log(error.response.data.code);
+        if(error.response.data.code){
+          return error.response.data
+        }
+      })
   }
 
   signupUser = (body) => {
@@ -66,7 +71,12 @@ export default class AuthProvider extends Component {
       .then((user) => {
         this.setUser(user);
       })
-      .catch(error => console.log(error))
+      .catch(error => {
+        console.log(error.response.data.code)
+        if(error.response.data.code){
+          return error.response.data
+        }
+      })
   }
 
   updateUser = (body) => {
