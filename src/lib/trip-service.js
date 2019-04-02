@@ -8,8 +8,8 @@ class TripService {
     })
   }
 
-  createTrip = (flight, photoCity) => {
-    const trip = { flight, photoCity }
+  createTrip = (flight, adults, photoCity) => {
+    const trip = { flight, adults, photoCity }
     return this.api.post('/trip/create', trip)
       .then((data) => console.log(data))
   }

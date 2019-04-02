@@ -67,7 +67,7 @@ class Card extends Component {
               <p className="card-text"> Departure schedule: {moment.unix(route[1].dTime).format("DD/MM/YYYY HH:mm")}</p>
               <p className="card-text"> Arrival schedule: {moment.unix(route[1].aTime).format("DD/MM/YYYY HH:mm")}</p>
 
-              <ButtonBuy flight={this.props.data} photoCity={photoCity} />
+              <ButtonBuy flight={this.props.data} adults={this.props.adults} photoCity={photoCity} />
 
             </div>
           </div>

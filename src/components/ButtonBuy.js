@@ -8,10 +8,15 @@ export class ButtonBuy extends Component {
   }
 
   handleClickBuy = async () => {
-    await tripService.createTrip(this.props.flight, this.props.photoCity)
-    this.setState({
-      isBought: true
-    })
+    try {
+      await tripService.createTrip(this.props.flight, this.props.adults, this.props.photoCity)
+      this.setState({
+        isBought: true
+      })
+
+    } catch (error) {
+      console.log(error);      
+    }
   }
 
   render() {
