@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withAuth } from '../providers/AuthProvider';
 import photosService from '../lib/photos-service'
 import tripService from '../lib/trip-service'
+import moment from 'moment';
 
 import firebase from 'firebase';
 import FileUploader from 'react-firebase-file-uploader';
@@ -79,13 +80,32 @@ export class Profile extends Component {
 
   renderList = () => {
     return this.state.flights.map(flight => {
-      const backgroundImage = { backgroundImage: `url(${flight.imgUrl})` }
+      const {imgUrl, destination, price, startFrom, startTo, returnFrom, returnTo} = flight 
+      console.log(flight);
+      const backgroundImage = { backgroundImage: `url(${imgUrl})` }
       return (
         <article key={flight._id} className="card card-horizontal">
           <div style={backgroundImage} className="card-horizontal-img"></div>
-          <div className="card-horitzontal-header">
-            <h5 className="card-horizontal-title">{flight.destination}</h5>
-            <p className="card-horizontal-price">{flight.price}€</p>
+          <div className="card-horizontal-content">
+
+            <div className="card-horitzontal-header">
+              <h5 className="card-horizontal-title">{destination}</h5>
+              <p className="card-horizontal-price">{price}€</p>
+            </div>
+            <div className="card-horitzontal-body">
+              <div className="card-outband">
+                <i className="fas fa-plane"></i>
+                <div className="card-outband-schedule">{moment.unix(startFrom).format("DD/MM LT")}</div>
+                <div className="card-outband-schedule">{moment.unix(startTo).format("DD/MM LT")}</div>
+              </div>
+
+              <div className="card-return">
+                <i className="fas fa-plane"></i>
+                <div className="card-return-schedule">{moment.unix(returnFrom).format("DD/MM LT")}</div>
+                <div className="card-return-schedule">{moment.unix(returnTo).format("DD/MM LT")}</div>
+              </div> 
+            </div>
+
           </div>
         </article>
       )

@@ -276,28 +276,35 @@ ul{
 }
 
 .card-horizontal-img{
-  flex: 1 1 25%;
-  width: 100px;
-  height: 100px;
+  flex: 1 1 30%;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: 70% 50%;
   border-top-left-radius: .5rem;
   border-bottom-left-radius: .5rem;
 }
 
-.card-horitzontal-header{
-  flex: 1 1 75%;
+.card-horizontal-content{
+  display: flex;
+  flex: 1 1 70%;
+  flex-direction: column;
+  flex-wrap: wrap;
   padding: .75rem;
+}
+
+.card-horitzontal-header{
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-wrap: nowrap;
 }
 
 .card-horizontal-title{
   margin-bottom: 0;
   flex: 1 0 60%;
+}
+
+.card-adults{
+
 }
 
 .card-horizontal-price{
@@ -306,6 +313,15 @@ ul{
   color: var(--color-primary);
   font-weight: 500;
   font-size: 1.15rem;
+}
+
+.card-horitzontal-body .fa-plane{
+  top: 25px;
+}
+
+.card-horitzontal-body .card-outband, 
+.card-horitzontal-body .card-return{
+  padding: 0.5rem;
 }
 
 /* ---- Icons ---- */
