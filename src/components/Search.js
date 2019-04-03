@@ -43,11 +43,6 @@ export class Search extends Component {
     const returnTo = new Date(this.state.returnTo)
     flightsService.returnTo = moment(returnTo).format("DD/MM/YYYY")
 
-    console.log(flightsService.startFrom);
-    console.log(flightsService.startTo);
-    console.log(flightsService.returnFrom);
-    console.log(flightsService.returnTo);
-
     flightsService.departureCity = this.state.departureCity
     flightsService.adults = this.state.adults
     this.props.handleList(true)

@@ -54,7 +54,11 @@ export class List extends Component {
             <button onClick={this.handleShowList} className="btn btn-link">
               <i className="fas fa-angle-left"></i> Go back
             </button>
-            <h3>Flights from {this.state.flights[0].cityFrom}</h3>
+            { 
+              (this.state.flights.length)
+              ? <h3>Flights from {this.state.flights[0].cityFrom}</h3> 
+              : <div className="alert alert-danger" role="alert">Error! check your dates</div> 
+            }
             {
               this.state.flights.map(flight => (
                 <Card key={flight.id} data={flight} adults={this.state.adults} />
@@ -63,7 +67,14 @@ export class List extends Component {
           </React.Fragment>
         )
       case 'hasError':
-        return 'Error!'
+        return (
+          <React.Fragment>
+            <button onClick={this.handleShowList} className="btn btn-link">
+              <i className="fas fa-angle-left"></i> Go back
+            </button>
+            <div className="alert alert-danger" role="alert">Error! check your search fields</div>
+          </React.Fragment>
+        )
       default:
         break
     }
