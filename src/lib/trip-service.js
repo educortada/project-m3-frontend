@@ -11,7 +11,7 @@ class TripService {
   createTrip = (flight, adults, photoCity) => {
     const trip = { flight, adults, photoCity }
     return this.api.post('/trip/create', trip)
-      .then((data) => console.log(data))
+      .then(({data}) => data)
   }
 
   getFlights = () => {

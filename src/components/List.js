@@ -22,7 +22,6 @@ export class List extends Component {
           status: 'isLoaded',
         }
       )
-      console.log(api)
 
     } catch (error) {
       this.setState({

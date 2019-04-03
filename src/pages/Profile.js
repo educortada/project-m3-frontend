@@ -81,7 +81,7 @@ export class Profile extends Component {
   renderList = () => {
     return this.state.flights.map(flight => {
       const {imgUrl, destination, price, adults, startFrom, startTo, returnFrom, returnTo} = flight 
-      console.log(flight);
+      
       const backgroundImage = { backgroundImage: `url(${imgUrl})` }
       return (
         <article key={flight._id} className="card card-horizontal">
