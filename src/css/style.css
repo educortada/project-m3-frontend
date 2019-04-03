@@ -303,8 +303,12 @@ ul{
   flex: 1 0 60%;
 }
 
-.card-adults{
-
+.card-horizontal-adults{
+  position: absolute;
+  top: 35px;
+  right: 14px;
+  color: var( --color-text-light);
+  font-size: 0.75rem;
 }
 
 .card-horizontal-price{
@@ -454,4 +458,8 @@ ul{
 .react-datepicker__header{
   background-color: var(--background) !important;
   border-bottom: 0 !important;
+}
+
+.spinner-border{
+  color: var(--color-primary);
 }

@@ -80,7 +80,7 @@ export class Profile extends Component {
 
   renderList = () => {
     return this.state.flights.map(flight => {
-      const {imgUrl, destination, price, startFrom, startTo, returnFrom, returnTo} = flight 
+      const {imgUrl, destination, price, adults, startFrom, startTo, returnFrom, returnTo} = flight 
       console.log(flight);
       const backgroundImage = { backgroundImage: `url(${imgUrl})` }
       return (
@@ -90,6 +90,7 @@ export class Profile extends Component {
 
             <div className="card-horitzontal-header">
               <h5 className="card-horizontal-title">{destination}</h5>
+              <p className="card-horizontal-adults">{adults} Adults</p>
               <p className="card-horizontal-price">{price}€</p>
             </div>
             <div className="card-horitzontal-body">
@@ -119,7 +120,13 @@ export class Profile extends Component {
 
     switch (status) {
       case 'isLoading':
-        return <p>Loading...</p>
+        return(
+          <div className="d-flex justify-content-center">
+            <div className="spinner-border" role="status">
+              <span className="sr-only">Loading...</span>
+            </div>
+          </div>
+        )
       case 'isLoaded':
         return (
           <React.Fragment>

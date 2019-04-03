@@ -41,7 +41,13 @@ export class List extends Component {
 
     switch (status) {
       case 'isLoading':
-        return <p>Loading...</p>
+        return(
+          <div className="d-flex justify-content-center">
+            <div className="spinner-border" role="status">
+              <span className="sr-only">Loading...</span>
+            </div>
+          </div>
+        )
       case 'isLoaded':
         return (
           <React.Fragment>
