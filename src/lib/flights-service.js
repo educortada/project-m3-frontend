@@ -13,7 +13,7 @@ class FlightsService {
     this.adults = ''
   }
   // getAllFlightsFrom = () => {
-  //   return this.api.get(`/flights?&fly_from=BCN&fly_to=LGW,CDG&date_from=05/04/2018&date_to=10/04/2019&return_from=01/05/2019&return_to=10/05/2019&adults=1&sort=quality&one_for_city=1&max_stopovers=0`)
+  //   return this.api.get(`/flights?&fly_from=BCN&fly_to=LGW,CDG,FCO&date_from=01/05/2019&date_to=11/05/2019&return_from=20/05/2019&return_to=28/05/2019&adults=1&sort=quality&one_for_city=1&max_stopovers=0`)
   //     .then(({ data }) => data)
   // }
 

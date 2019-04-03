@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export class FavoritesNavbar extends Component {
   render() {
     return (
-      <Consumer> 
+      <Consumer>
         {
           (value) => {
             return (
@@ -17,8 +17,18 @@ export class FavoritesNavbar extends Component {
                   <ul>
                     {
                       (value.favorites.length > 0)
-                        ? value.favorites.map(trip => {
-                         return <Link to={`favorite/${this.props.favoriteIdDetail}`} key={trip.id} className="dropdown-item">{trip.cityTo}</Link>
+                        ? value.favorites.map(favorite => {
+                          return (
+                            <li key={favorite._id}>
+                              <Link
+                                to={`/favorite/${favorite._id}`}
+                                className="dropdown-item favorite-dropdown-item"
+                              >
+                                <img src={favorite.imgUrl} alt={favorite.destination} />
+                                {favorite.destination}
+                              </Link>
+                            </li>
+                          )
                         })
                         : <li className="dropdown-item">You don't have favorites yet!</li>
                     }

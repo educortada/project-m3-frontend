@@ -39,7 +39,7 @@ export class Search extends Component {
 
     const returnFrom = new Date(this.state.returnFrom)
     flightsService.returnFrom = moment(returnFrom).format("DD/MM/YYYY")
-    
+
     const returnTo = new Date(this.state.returnTo)
     flightsService.returnTo = moment(returnTo).format("DD/MM/YYYY")
 
@@ -80,44 +80,47 @@ export class Search extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleFormSubmit} className="search-flight">
-        <select onChange={this.handleChange} className="custom-select" value={this.state.departureCity}>
-          <option value="selected">Departure city</option>
-          <option value="BCN">Barcelona</option>
-          <option value="MAD">Madrid</option>
-          <option value="BIO">Bilbao</option>
-          <option value="VLC">Valencia</option>
-          <option value="AGP">Malaga</option>
-          <option value="SVQ">Sevilla</option>
-        </select>
-        <span>Date from</span>
-        <DatePicker
-          selected={this.state.startFrom}
-          onChange={this.handleChangeStartFrom}
-          className="date-picker custom-select"
-        />
-        <span>Date to</span>
-        <DatePicker
-          selected={this.state.startTo}
-          onChange={this.handleChangeStartTo}
-          className="date-picker custom-select"
-        />
-        <span>Return from</span>
-        <DatePicker
-          selected={this.state.returnFrom}
-          onChange={this.handleChangeReturnFrom}
-          className="date-picker custom-select"
-        />
-        <span>Return to</span>
-        <DatePicker
-          selected={this.state.returnTo}
-          onChange={this.handleChangeReturnTo}
-          className="date-picker custom-select"
-        />
-        <span>Adults</span>
-        <QuantityBox adults={this.handleQuantity} />
-        <button className="btn btn-primary">Search</button>
-      </form>
+      <>
+        <h4>Start your trip</h4>
+        <form onSubmit={this.handleFormSubmit} className="search-flight">
+          <select onChange={this.handleChange} className="custom-select" value={this.state.departureCity}>
+            <option value="selected">Departure city</option>
+            <option value="BCN">Barcelona</option>
+            <option value="MAD">Madrid</option>
+            <option value="BIO">Bilbao</option>
+            <option value="VLC">Valencia</option>
+            <option value="AGP">Malaga</option>
+            <option value="SVQ">Sevilla</option>
+          </select>
+          <span>Date from</span>
+          <DatePicker
+            selected={this.state.startFrom}
+            onChange={this.handleChangeStartFrom}
+            className="date-picker custom-select"
+          />
+          <span>Date to</span>
+          <DatePicker
+            selected={this.state.startTo}
+            onChange={this.handleChangeStartTo}
+            className="date-picker custom-select"
+          />
+          <span>Return from</span>
+          <DatePicker
+            selected={this.state.returnFrom}
+            onChange={this.handleChangeReturnFrom}
+            className="date-picker custom-select"
+          />
+          <span>Return to</span>
+          <DatePicker
+            selected={this.state.returnTo}
+            onChange={this.handleChangeReturnTo}
+            className="date-picker custom-select"
+          />
+          <span>Adults</span>
+          <QuantityBox adults={this.handleQuantity} />
+          <button className="btn btn-primary">Search</button>
+        </form>
+      </>
     )
   }
 }

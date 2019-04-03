@@ -12,31 +12,28 @@ export class FavoriteCard extends Component {
 
   // Si el id de del trip està dins de l'array favorites --> isTripInsideFavorites: true
   handleIsTripInsideFavorite = (favoriteList) => {
-    const isTripInsideFavorites = favoriteList.find(trip => (
-      trip.id === this.props.trip.id
+    const isTripInsideFavorites = favoriteList.find(favorite => (
+      favorite._id === this.state.idFavorite
     ))
     return isTripInsideFavorites
   }
 
-  handleRemoveFavorite = (removeFromFavorite, favoriteList) => {
-    const updateFavorites = favoriteList.filter(trip => {
-      return this.props.trip.id !== trip.id
-    })
-    removeFromFavorite(updateFavorites)
-    favoriteService.deleteFavoriteById(this.state.idFavorite)
+  handleRemoveFavorite = async (removeFromFavorite) => {
+    try {
+      await favoriteService.deleteFavoriteById(this.state.idFavorite)
+      removeFromFavorite()
+    } catch (error) {
+      console.log(error)
+    }
   }
 
-  handleClickAddToFavorite = async (addFavorite, getFavoriteIdDetail) => {
-    addFavorite(this.props.trip)
+  handleClickAddToFavorite = async (addFavorite) => {
     try {
       const favorite = await favoriteService.createFavorite(this.props.trip, this.props.adults, this.props.photoCity)
-      getFavoriteIdDetail(favorite.data._id)
-
-      this.setState({
-        idFavorite: favorite.data._id,
-      })
+      addFavorite()
+      this.setState({ idFavorite: favorite.data._id })
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   }
 
@@ -49,10 +46,10 @@ export class FavoriteCard extends Component {
               <React.Fragment>
                 {
                   (this.handleIsTripInsideFavorite(value.favorites))
-                    ? <button onClick={() => this.handleRemoveFavorite(value.removeFromFavorite, value.favorites, value.getFavoriteIdDetail)} className="card-favorite">
+                    ? <button onClick={() => this.handleRemoveFavorite(value.removeFromFavorite)} className="card-favorite">
                       <i className="fas fa-heart"></i>
                     </button>
-                    : <button onClick={() => this.handleClickAddToFavorite(value.addToFavorite, value.getFavoriteIdDetail)} className="card-favorite">
+                    : <button onClick={() => this.handleClickAddToFavorite(value.addToFavorite)} className="card-favorite">
                       <i className="far fa-heart"></i>
                     </button>
                 }

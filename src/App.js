@@ -24,6 +24,7 @@ import Favorite from './pages/Favorite';
 import firebase from 'firebase';
 
 import AuthProvider from './providers/AuthProvider';
+import favoritesService from './lib/favorite-service';
 
 // Context
 const Context = React.createContext();
@@ -43,26 +44,21 @@ firebase.initializeApp(config)
 class App extends Component {
   state = {
     favorites: [],
-    favoriteIdDetail: null,
-    
   }
 
-  handleAddToFavorite = (trip) => {
-    this.setState(
-      { favorites: [...this.state.favorites, trip] }
-    )
+  componentDidMount = async () => {
+    const favorites = await favoritesService.getFavorites()
+    this.setState({ favorites })
   }
 
-  handleRemoveFromFavorite = (updatedFavoriteList) => {
-    this.setState(
-      { favorites: [...updatedFavoriteList] }
-    )
+  handleAddToFavorite = async () => {
+    const favorites = await favoritesService.getFavorites()
+    this.setState({ favorites })
   }
 
-  getFavoriteIdDetail = (id) => {
-    this.setState({
-      favoriteIdDetail: id
-    })
+  handleRemoveFromFavorite = async () => {
+    const favorites = await favoritesService.getFavorites()
+    this.setState({ favorites })
   }
 
   render() {
@@ -74,7 +70,6 @@ class App extends Component {
               favorites: this.state.favorites,
               addToFavorite: this.handleAddToFavorite,
               removeFromFavorite: this.handleRemoveFromFavorite,
-              getFavoriteIdDetail: this.getFavoriteIdDetail,
             }
           }
         >
