@@ -28,7 +28,7 @@ class Navbar extends Component {
               </ul>
             </div>
             <div className="btn-group navbar-right-fixed">
-              <FavoritesNavbar />
+              {(this.props.favoriteIdDetail === null) ? false : <FavoritesNavbar favoriteIdDetail={this.props.favoriteIdDetail} />}
               <ProfileNavbar />
             </div>
 

@@ -59,7 +59,7 @@ class Card extends Component {
           <div className="card">
             <div style={cardPhoto} className="card-img-top"></div>
             <div className="card-body">
-              <FavoriteCard trip={this.props.data} />
+              <FavoriteCard trip={this.props.data} adults={adults} photoCity={photoCity} />
 
               <div className="card-header">
                 <h4 className="card-title">{cityTo}</h4>

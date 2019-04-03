@@ -19,6 +19,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Start from './pages/Start';
+import Favorite from './pages/Favorite';
 
 import firebase from 'firebase';
 
@@ -42,6 +43,8 @@ firebase.initializeApp(config)
 class App extends Component {
   state = {
     favorites: [],
+    favoriteIdDetail: null,
+    
   }
 
   handleAddToFavorite = (trip) => {
@@ -56,6 +59,12 @@ class App extends Component {
     )
   }
 
+  getFavoriteIdDetail = (id) => {
+    this.setState({
+      favoriteIdDetail: id
+    })
+  }
+
   render() {
     return (
       <AuthProvider>
@@ -64,11 +73,12 @@ class App extends Component {
             {
               favorites: this.state.favorites,
               addToFavorite: this.handleAddToFavorite,
-              removeFromFavorite: this.handleRemoveFromFavorite
+              removeFromFavorite: this.handleRemoveFromFavorite,
+              getFavoriteIdDetail: this.getFavoriteIdDetail,
             }
           }
         >
-          <Navbar />
+          <Navbar favoriteIdDetail={this.state.favoriteIdDetail} />
           <div className="container">
             <Switch>
               <AnonRoute exact path="/" component={Start} />
@@ -76,6 +86,7 @@ class App extends Component {
               <AnonRoute path="/login" component={Login} />
               <PrivateRoute path="/home" component={Private} />
               <PrivateRoute path="/profile" component={Profile} />
+              <PrivateRoute path="/favorite/:id" component={Favorite} />
             </Switch>
           </div>
         </Context.Provider>

@@ -256,7 +256,7 @@ ul{
   font-size: 1.25rem;
   color: var(--color-heart);
   top: -18px;
-  left: 176px;
+  left: calc(50% - 20px);
   width: 40px;
   height: 40px;
   border-radius: 50%;
