@@ -13,23 +13,7 @@ class Favorite extends Component {
     favoriteData: '',
     status: 'isLoading',
     isDeleted: false,
-  }
-
-  componentDidMount = async () => {
-    const { id } = this.props.match.params
-    try {
-      const detailFavorite = await favoriteService.getFavoriteById(id)
-      this.setState({
-        favoriteData: detailFavorite,
-        status: 'isLoaded',
-      })
-
-    } catch (error) {
-      this.setState({
-        status: 'hasError',
-      })
-      console.log(error);
-    }
+    id: '',
   }
 
   handleRemoveFavorite = async (removeFromFavorite) => {
@@ -43,7 +27,29 @@ class Favorite extends Component {
     }
   }
 
+  getDataFromFavorite = async () => {
+    const { id } = this.props.match.params
+    try {
+      const detailFavorite = await favoriteService.getFavoriteById(id)
+      this.setState({
+        favoriteData: detailFavorite,
+        status: 'isLoaded',
+        id,
+      })
+
+    } catch (error) {
+      this.setState({
+        status: 'hasError',
+      })
+      console.log(error);
+    }
+  }
+
   render() {
+    // Force render when change favorite item in dropdown
+    if(this.state.id !== this.props.match.params.id){
+      this.getDataFromFavorite()
+    }
     const { imgUrl, destination, price, adults, startFrom, startTo, returnFrom, returnTo } = this.state.favoriteData
     const backgroundImage = { backgroundImage: `url(${imgUrl})` }
     const { status } = this.state
