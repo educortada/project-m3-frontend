@@ -41,6 +41,7 @@ class Signup extends Component {
     const { username, password, email, errorMessage } = this.state;
     return (
       <React.Fragment>
+        <h4 className="margin-x-noraml">Sign Up</h4>
         {errorMessage && <div className="alert alert-danger" role="alert">{errorMessage}</div>}
         <form onSubmit={this.handleFormSubmit}>
           <div className="form-group">
@@ -52,7 +53,7 @@ class Signup extends Component {
           <div className="form-group">
             <input onChange={this.handleChange} className="form-control" type="password" name="password" placeholder="Password" value={password} />
           </div>
-          <button className="btn btn-primary">Signup</button>
+          <button className="btn btn-primary btn-wide">Sign up</button>
         </form>
         <p className="margin-x-noraml">Already have account? <Link to={"/login"} className="btn btn-link"> Login</Link></p>
       </React.Fragment>
