@@ -108,7 +108,7 @@ class Favorite extends Component {
           </Consumer>
         )
       case 'hasError':
-        return 'Error!'
+        return ( <div className="alert alert-danger" role="alert">Error!</div> )
       default:
         break
     }

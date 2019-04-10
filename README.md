@@ -1,8 +1,8 @@
-# Project Name
+# Flight Finder
 
 ## Description
 
-The 'Project Name' is a surprise trip. You will not discover your destination until a few days before traveling.
+Find the cheapest flights from spain to some amazing european cities.
 
 ## User Stories
 
@@ -10,149 +10,149 @@ The 'Project Name' is a surprise trip. You will not discover your destination un
 -  **Signup:** As an anon I can sign up in the platform so that I can start saving favorite destinations. 
 -  **Login:** As a user I can login to the platform so that I can see my destination.
 -  **Logout:** As a user I can logout from the platform so no one else can use it
--  **Select trip preferences :** As a user I can select my trip preferences (budget, departure, date, number of persons) so that I can see a list of match destinations.
+-  **Search flight :** As a user I can select my trip preferences (departure, date, number of persons) so that I can see a list of match destinations.
 -  **List destinations:** As a user I want to see all the destinations that match with my preferences.
--  **Add to favorites:** As a user I want to add six destination to favorite so that I can save the destinations that I liked the most
--  **Detail destination:** As a user I want to see all the information about this destination.
--  **See my destination:** As a user I want to see my final destination so that I can see the one in my profile.
+-  **Buy:** As a user I can buy flights and see all booked flights in my profile.
+-  **Add to favorites:** As a user I want to add destination to favorite so that I can save the destinations that I liked the most
+-  **Favorite detail:** As a user I want to see all the information about this flight.
 
 ## Backlog
 
 Favorites
-
 User profile:
-
 - upload my profile picture
-
 Weather:
 - See the forecats for each destination.
 
 # Client
 
 ## Routes
-| Method | Path | Component | Permissions | Behavior |
-|--------|------|--------|--| -------|
-| `get`  | `/` | HomePageComponent| public | Landing page |
-| `post` | `/auth/signup` | SignupPageComponent| anon only| signup form, link to login, navigate to homepage after signup|
-| `post` | `/auth/login` | LoginPageComponent | anon only |login form, link to signup, navigate to homepage after login |
-| `post` | `/auth/logout` | Navbar | anon only | navigate to homepage after logout, expire session |
-| `get`  |  /destinations | List of all destiantions that match width my preferences.
-| `get` | `/profile/:id` | Profile
+| Route | Component | Permissions |
+|------|--------|:-|
+| `/` | Start | Anon only |
+| /signup | Signup | Anon only |
+| /login | Login | Anon only |
+| /home | Private | Private only |
+| /profile | Profile | Private only |
+| /favorite/:id | Favorite | Private only |
+
 
 
 ## Components
 
-- Navbar
+- AnonRoute
+- ButtonBuy
 - Card
-- Like
-- Shopping cart
-- Calendar picker
+-  FavoriteCard
+- FavoritesNavbar
+- List
+- Navbar
+- PrivateRoute
+- ProfileNavbar
+- QuantityBox
+- Search
 
+## Pages
+
+- Favorite
+- Login
+- Private
+- Profile
+- Signup
+- Start
 
 ## Services
 
 - Auth Service
-  - auth.login(user)
-  - auth.signup(user)
-  - auth.logout()
-  - auth.me()
-  - auth.getUser() // synchronous
+  - authService.login(user)
+  - authService.signup(user)
+  - authService.logout()
+  - authService.me()
+  - authService.update(user)
 - Trip Service
-  - trip.list()
-  - trip.random()
-  - trip.detail(id)
-  - trip.addFavorite(id)
-  - trip.removeFavorite(id)   
+  - tripService.createTrip(flight, adults, photoCity)
+  - tripService.getFlights()
+- Favorite Service
+  - favoritesService.createFavorite(flight, adults, photoCity)
+  - favoritesService.getFavorites()
+  - favoritesService.getFavoriteById(id)
+  - favoritesService.deleteFavoriteById(id)
+- Flights Service
+  - flightsService.getAllFlightsFrom()
+- Photos Service
+  - photosService.getPhoto(city)
 
-# Server
+# Backend
 
 ## Models
 
-User model
+User model:
 
 ```
-username - String // required
-email - String // required & unique
-password - String // required
+username: String
+email: String
+password: String
+avatarURL: String
 ```
 
-Trip model
+Trip model:
 
 ```
-owner - ObjectID<User> // required
-destination - String // required
-date - Number
-price - Number
-persons - Number
-hotel - String
+owner: type: ObjectId
+destination: String
+imgUrl: String
+price: Number
+adults: Number
+startFrom: String
+startTo: String
+returnFrom: String
+returnTo: String
+```
+
+Favorite model:
+
+```
+owner: type: ObjectId
+destination: String
+imgUrl: String
+price: Number
+adults: Number
+startFrom: String
+startTo: String
+returnFrom: String
+returnTo: String
 ```
 
 ## API Endpoints (backend routes)
 
 - GET /auth/me
-  - 404 if no user in session
-  - 200 with user object
 - POST /auth/signup
-  - 401 if user logged in
-  - body:
-    - username
-    - password
-  - validation
-    - fields not empty (422)
-    - user not exists (409)
-  - create user with encrypted password
-  - store user in session
-  - 200 with user object
 - POST /auth/login
-  - 401 if user logged in
-  - body:
-    - username
-    - password
-  - validation
-    - fields not empty (422)
-    - user exists (404)
-    - passdword matches (404)
-  - store user in session
-  - 200 with user object
 - POST /auth/logout
-  - body: (empty)
-  - 204
-- POST /user/me/favorite
-  - body:
-    - tripId
-  - validation
-    - id is valid (404)
-    - id exists (404)
-  - add to favorites if not there yet
-  - updates user in session
-- DELETE /user/me/favorite/:tripId
-  - validation
-    - id is valid (404)
-    - id exists (404)
-  - body: (empty - the user is already stored in the session)
-  - remove from favorites
-  - updates user in session
-- GET /trip/:id
-- POST /trip/
-- DELETE/trip/:id
+- GET /auth/private
+- PUT /auth/profile/update
 
-API
+- POST /favorite/create
+- GET /favorite/get
+- GET /favorite/detail/:id
+- DELETE /favorite/detail/:id
 
-- Kiwi
-- Openweather
-- http://goibibo.com
+- POST /trip/create
+- GET /trip/flights
 
-### Git
 
-The url to your repository and to your deployed project
+## API
 
-[Client repository Link](http://github.com)
-[Server repository Link](http://github.com)
+- Kiwi - https://docs.kiwi.com
+- Unsplash - https://unsplash.com/developers
 
-[Deploy Link](http://heroku.com)
+## Git
 
-### Slides
+[Client repository Link](https://github.com/educortada/project-m3-frontend)
+[Server repository Link](https://github.com/educortada/project-m3-backend)
 
-The url to your presentation slides
+[Deploy Link](https://project-m3-322bd.firebaseapp.com/home)
 
-[Slides Link](http://slides.com)
+## Slides
+
+[Slides Link](https://docs.google.com/presentation/d/1otAExCER92VhIpQAe5pu057Dd86Pp55r8UaYmH9-HQI/edit?usp=sharing)
